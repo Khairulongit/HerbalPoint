@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "256614119570",
+    "firebase_url": "https://tdapp-a3255-default-rtdb.firebaseio.com",
+    "project_id": "tdapp-a3255",
+    "storage_bucket": "tdapp-a3255.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256614119570:android:7c801007692be67e220e4b",
+        "android_client_info": {
+          "package_name": "com.tchnodynamic.herbalpoint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256614119570-iis7u6p05tp7p2q758g6hs1bnmp496ei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcjJKhdjqfYMXicC2MXkrEIixZjvIenFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256614119570-iis7u6p05tp7p2q758g6hs1bnmp496ei.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256614119570:android:e69f64855c6f6146220e4b",
+        "android_client_info": {
+          "package_name": "com.technodynamic.technodynamiclanding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256614119570-iis7u6p05tp7p2q758g6hs1bnmp496ei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcjJKhdjqfYMXicC2MXkrEIixZjvIenFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256614119570-iis7u6p05tp7p2q758g6hs1bnmp496ei.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
