@@ -129,72 +129,72 @@ class DispesarDetailsActivit : AppCompatActivity(), DatePickerDialog.OnDateSetLi
                 Toast.LENGTH_SHORT
             )
                 .show()
-            TextUtils.isEmpty(patinetname) -> Toast.makeText(
-                this,
-                "Patient's Name is Empty",
-                Toast.LENGTH_SHORT
-            )
-                .show()
-            TextUtils.isEmpty(patinetaddress) -> Toast.makeText(
-                this,
-                "Patient's Address is Empty",
-                Toast.LENGTH_SHORT
-            ).show()
-            TextUtils.isEmpty(patinetcontact) -> Toast.makeText(
-                this,
-                "Your Contact is Empty",
-                Toast.LENGTH_SHORT
-            ).show()
-            TextUtils.isEmpty(patinetage) -> Toast.makeText(
-                this,
-                "Patient's Age is Empty",
-                Toast.LENGTH_SHORT
-            ).show()
-            TextUtils.isEmpty(patientdisease) -> Toast.makeText(
-                this,
-                "Type of Disease is Empty",
-                Toast.LENGTH_SHORT
-            ).show()
-
-
-            (!patinetname.matches(regexaddre)) -> {
-                Toast.makeText(this, "WARNING: Enter a valid name !", Toast.LENGTH_SHORT).show()
-            }
-
-            (!patinetcontact.matches(regexStrphn)) -> {
-                Toast.makeText(this, "WARNING: Enter a valid Number !", Toast.LENGTH_SHORT).show()
-            }
-
-            (!patinetaddress.matches(regexaddre)) -> {
-                Toast.makeText(this, "WARNING: Enter Valid Address!", Toast.LENGTH_SHORT).show()
-            }
-
-            (!patinetage.matches(regexnum)) -> {
-                Toast.makeText(
-                    this,
-                    "WARNING: Enter a Valid Age !",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            (!patientdisease.matches(regexaddre)) -> {
-                Toast.makeText(
-                    this,
-                    "WARNING: Enter a Valid Type of Disease !",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+//            TextUtils.isEmpty(patinetname) -> Toast.makeText(
+//                this,
+//                "Patient's Name is Empty",
+//                Toast.LENGTH_SHORT
+//            )
+//                .show()
+//            TextUtils.isEmpty(patinetaddress) -> Toast.makeText(
+//                this,
+//                "Patient's Address is Empty",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//            TextUtils.isEmpty(patinetcontact) -> Toast.makeText(
+//                this,
+//                "Your Contact is Empty",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//            TextUtils.isEmpty(patinetage) -> Toast.makeText(
+//                this,
+//                "Patient's Age is Empty",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//            TextUtils.isEmpty(patientdisease) -> Toast.makeText(
+//                this,
+//                "Type of Disease is Empty",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//
+//
+//            (!patinetname.matches(regexfname)) -> {
+//                Toast.makeText(this, "WARNING: Enter a valid name !", Toast.LENGTH_SHORT).show()
+//            }
+//
+//            (!patinetcontact.matches(regexStrphn)) -> {
+//                Toast.makeText(this, "WARNING: Enter a valid Number !", Toast.LENGTH_SHORT).show()
+//            }
+//
+////            (!patinetaddress.matches(regexaddre)) -> {
+////                Toast.makeText(this, "WARNING: Enter Valid Address!", Toast.LENGTH_SHORT).show()
+////            }
+//
+//            (!patinetage.matches(regexnum)) -> {
+//                Toast.makeText(
+//                    this,
+//                    "WARNING: Enter a Valid Age !",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+//            (!patientdisease.matches(regexaddre)) -> {
+//                Toast.makeText(
+//                    this,
+//                    "WARNING: Enter a Valid Type of Disease !",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
 
 
             else -> {
                 Confirmorder()
 
-                Toast.makeText(applicationContext, "Orders Placed Successfully", Toast.LENGTH_SHORT)
-                    .show()
-                val intent = Intent(applicationContext, MyOrdersActivity::class.java)
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK+Intent.FLAG_ACTIVITY_NEW_TASK)
-                intent.putExtra("activity", "ConfirmFinalOrderActivity")
-                startActivity(intent)
-                finish()
+//                Toast.makeText(applicationContext, "Orders Placed Successfully", Toast.LENGTH_SHORT)
+//                    .show()
+//                val intent = Intent(applicationContext, MyOrdersActivity::class.java)
+////                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK+Intent.FLAG_ACTIVITY_NEW_TASK)
+//                intent.putExtra("activity", "ConfirmFinalOrderActivity")
+//                startActivity(intent)
+//                finish()
 
             }
         }
@@ -232,6 +232,7 @@ class DispesarDetailsActivit : AppCompatActivity(), DatePickerDialog.OnDateSetLi
         newpapponiment["patinetcontact"] = patinetcontact
         newpapponiment["patinetage"] = patinetage
         newpapponiment["patientdisease"] = patientdisease
+        newpapponiment["appointmentid"] = appointmentid.toString()
         newpapponiment["productstatus"] = "pending"
 
         appobookedref.child(appointmentid!!).updateChildren(newpapponiment).addOnCompleteListener {

@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.google.firebase.auth.FirebaseAuth
+import com.tchnodynamic.herbalpoint.AllAppointmentActivity
 import com.tchnodynamic.herbalpoint.LoginActivity
 import com.tchnodynamic.herbalpoint.MedicinePurchase.AllMedicineProducts
 import com.tchnodynamic.herbalpoint.NetworkConnection
@@ -93,6 +94,11 @@ class AdminCategoryActivity : AppCompatActivity() {
 
         binding.modifyProductxBtn.setOnClickListener {
             val intent = Intent(this, AllMedicineProducts::class.java)
+            startActivity(intent)
+        }
+
+        binding.chkAppointments.setOnClickListener {
+            val intent = Intent(this, AllAppointmentActivity::class.java)
             startActivity(intent)
         }
 

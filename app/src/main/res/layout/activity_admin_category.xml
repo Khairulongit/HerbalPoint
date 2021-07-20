@@ -81,7 +81,7 @@
                     android:id="@+id/chk_orders_btn"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_above="@+id/admin_logout"
+                    android:layout_above="@+id/chk_appointments"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
@@ -89,6 +89,23 @@
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/btn_back"
                     android:text="Check New Orders"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+                <Button
+                    android:id="@+id/chk_appointments"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_above="@+id/admin_logout"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/btn_back"
+                    android:text="Check All Appointments"
                     android:textColor="@android:color/white"
                     android:textSize="15sp"
                     android:textStyle="bold" />

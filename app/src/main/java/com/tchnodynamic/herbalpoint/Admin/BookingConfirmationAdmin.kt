@@ -17,18 +17,22 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import com.tchnodynamic.herbalpoint.NetworkConnection
+import com.tchnodynamic.herbalpoint.Prevalent.Prevalent
 import com.tchnodynamic.herbalpoint.R
 import com.tchnodynamic.herbalpoint.databinding.ActivityBookingConfirmationAdminBinding
 
 class BookingConfirmationAdmin : AppCompatActivity() {
     private lateinit var binding: ActivityBookingConfirmationAdminBinding
 
-    var dname: String = ""
-    var dcontact: String = ""
-    var dfees: String = ""
-    var daddr: String = ""
-    var ddoctor: String = ""
-    var dtimings: String = ""
+    var dispname: String = ""
+    var patinetcontact: String = ""
+    var patientname: String = ""
+    var bookingtime: String = ""
+    var dispfees: String = ""
+    var patinetaddressring: String = ""
+    var patientdisease: String = ""
+    var appointmentid: String = ""
+    var dispuserid: String = ""
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +51,22 @@ class BookingConfirmationAdmin : AppCompatActivity() {
             }
 
         })
+
+
+        if (Prevalent.UserType != "Seller")
+            binding.liner123.visibility = View.GONE
+
+
+        binding.appoinmentConfirm.setOnClickListener {
+            FirebaseDatabase.getInstance().reference.child("Herbal Point").child("Sellers").child(dispuserid).child(appointmentid).child("productstatus").setValue("Confirm")
+        }
+
+        binding.appoinmentNotConfirm.setOnClickListener {
+            FirebaseDatabase.getInstance().reference.child("Herbal Point").child("Sellers").child(dispuserid).child(appointmentid).child("productstatus").setValue("Cancel")
+        }
+
+
+
 
 
         // Toolbar Logic below
@@ -71,18 +91,26 @@ class BookingConfirmationAdmin : AppCompatActivity() {
         }
 
 
-        dname = intent.getStringExtra("dname").toString()
-        dcontact = intent.getStringExtra("dcontact").toString()
-        dfees = intent.getStringExtra("dfees").toString()
-        daddr = intent.getStringExtra("daddr").toString()
-        ddoctor = intent.getStringExtra("ddoctor").toString()
-        dtimings = intent.getStringExtra("dtimings").toString()
+        dispname = intent.getStringExtra("dispname").toString()
+        dispuserid = intent.getStringExtra("dispuserid").toString()
+        appointmentid = intent.getStringExtra("appointmentid").toString()
+        patinetcontact = intent.getStringExtra("patinetcontact").toString()
+        patientname = intent.getStringExtra("patientname").toString()
+        bookingtime = intent.getStringExtra("bookingtime").toString()
+        dispfees = intent.getStringExtra("dispfees").toString()
+        patientdisease = intent.getStringExtra("patientdisease").toString()
+        patinetaddressring = intent.getStringExtra("patinetaddressring").toString()
+        patinetaddressring = intent.getStringExtra("patinetaddressring").toString()
+        patinetaddressring = intent.getStringExtra("patinetaddressring").toString()
 
-        binding.bookingTime.text = dtimings
-        binding.dispName.text = dname
-        binding.dispFees.text = dfees
-        binding.dispPatientAddress.text = daddr
-
+        binding.bookingTime.text = bookingtime
+        binding.dispName.text = patientname
+        binding.dispAddr.text = patinetaddressring
+        binding.dispFees.text = dispfees
+        binding.dispPatientName.text = patientname
+        binding.dispPatientAddress.text = patinetaddressring
+        binding.dispPatientContact.text = patinetcontact
+        binding.dispPatientTypeofdisease.text = patientdisease
 
 
     }

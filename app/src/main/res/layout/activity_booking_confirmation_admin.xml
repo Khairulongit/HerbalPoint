@@ -208,22 +208,42 @@
                 <!--        android:layout_alignParentRight="true"-->
                 <!--        android:src="@drawable/nav_cart">-->
 
-                <Button
-                    android:id="@+id/book_appointment"
-                    android:layout_width="200dp"
+                <LinearLayout
+                    android:id="@+id/liner123"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center|center_horizontal"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="77dp"
-                    android:background="@drawable/btn_back"
-                    android:text="Book Appointment"
-                    android:textColor="@android:color/white"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/appoinment_confirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="left"
+                        android:layout_margin="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_back"
+                        android:text="Confirm"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <Button
+                        android:id="@+id/appoinment_not_confirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:layout_margin="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_back"
+                        android:text="cancel"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
             </LinearLayout>
 

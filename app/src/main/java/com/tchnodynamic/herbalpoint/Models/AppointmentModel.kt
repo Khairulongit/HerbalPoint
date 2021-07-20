@@ -2,6 +2,7 @@ package com.tchnodynamic.herbalpoint.Models
 
 class AppointmentModel {
 
+    var dispuserid : String =""
     var dispname : String =""
     var dispfees: String =""
     var dispdoctor: String =""
@@ -11,11 +12,14 @@ class AppointmentModel {
     var patinetcontact : String=""
     var patinetage :String=""
     var patientdisease:String=""
+    var appointmentid:String=""
 
     constructor()
 
 
     constructor(
+
+        dispuserid: String,
         dispname: String,
         dispfees: String,
         dispdoctor: String,
@@ -24,8 +28,10 @@ class AppointmentModel {
         patinetaddressring: String,
         patinetcontact: String,
         patinetage: String,
-        patientdisease: String
+        patientdisease: String,
+        appointmentid: String
     ) {
+        this.dispuserid=dispuserid
         this.dispname = dispname
         this.dispfees = dispfees
         this.dispdoctor = dispdoctor
@@ -35,5 +41,6 @@ class AppointmentModel {
         this.patinetcontact = patinetcontact
         this.patinetage = patinetage
         this.patientdisease = patientdisease
+        this.appointmentid = appointmentid
     }
 }

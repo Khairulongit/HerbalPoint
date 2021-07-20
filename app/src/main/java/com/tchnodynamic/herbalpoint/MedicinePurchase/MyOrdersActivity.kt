@@ -109,7 +109,7 @@ class MyOrdersActivity : AppCompatActivity() {
 
     private fun getmyordersbuyer() {
 
-        val BuyerAllOrders = FirebaseDatabase.getInstance().reference.child("Herbal Point").child("Placed Orders").child(
+        val BuyerAllOrders = FirebaseDatabase.getInstance().reference.child("Herbal Point").child("Booked Appointment").child(
             FirebaseAuth.getInstance().currentUser!!.uid
         )
 
