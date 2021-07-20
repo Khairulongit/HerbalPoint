@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:animateLayoutChanges="true"
     android:gravity="center"
-    tools:context=".DispesarDetailsActivit">
+    tools:context=".Admin.BookingConfirmationAdmin">
 
 
     <include layout="@layout/toolbar"></include>
@@ -69,7 +69,7 @@
                         android:textColor="#38118C"
                         android:textSize="18sp" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/disp_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -80,7 +80,8 @@
                         android:hint="Name"
                         android:inputType="text"
                         android:padding="12dp"
-                        android:textColor="#38118C" />
+                        android:textColor="#38118C"
+                        android:textSize="18sp" />
 
 
                     <TextView
@@ -114,7 +115,7 @@
                         android:textSize="18sp"
                         android:textStyle="normal" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/disp_patient_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -127,9 +128,10 @@
                         android:inputType="text"
                         android:padding="12dp"
                         android:textColor="#38118C"
+                        android:textSize="18sp"
                         android:textStyle="normal" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/disp_patient_address"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -142,9 +144,10 @@
                         android:inputType="textMultiLine"
                         android:padding="12dp"
                         android:textColor="#38118C"
+                        android:textSize="18sp"
                         android:textStyle="normal" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/disp_patient_contact"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -157,9 +160,10 @@
                         android:inputType="number"
                         android:padding="12dp"
                         android:textColor="#38118C"
+                        android:textSize="18sp"
                         android:textStyle="normal" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/disp_patient_age"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -172,9 +176,10 @@
                         android:inputType="number"
                         android:padding="12dp"
                         android:textColor="#38118C"
+                        android:textSize="18sp"
                         android:textStyle="normal" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/disp_patient_typeofdisease"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -187,6 +192,7 @@
                         android:inputType="text"
                         android:padding="12dp"
                         android:textColor="#38118C"
+                        android:textSize="18sp"
                         android:textStyle="normal" />
 
                 </LinearLayout>
@@ -242,6 +248,8 @@
 
                 </ImageView>
             </LinearLayout>
+
+
 
 
         </LinearLayout>

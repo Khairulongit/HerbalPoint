@@ -49,7 +49,7 @@ class DispensaryAdapters (private val mContext: Context,
             intent.putExtra("daddr",mainModel.dispadd)
             intent.putExtra("ddoctor",mainModel.dispdoctr)
             intent.putExtra("dtimings",mainModel.disptimngs)
-            intent.putExtra("dimg",mainModel.disptimngs)
+            intent.putExtra("dpatnae",mainModel.disptimngs)
             mContext.startActivity(intent)
         }
 

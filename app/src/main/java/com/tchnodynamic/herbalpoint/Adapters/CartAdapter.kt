@@ -139,7 +139,7 @@ class CartAdapter(private val mContext: Context,
         var cartuserphonenumber: TextView = itemView.findViewById(R.id.cartconatctorder)
         var cartuserdatetime: TextView = itemView.findViewById(R.id.cartordertime)
         var cartusershippingaddress: TextView = itemView.findViewById(R.id.cartdeliveryaddress)
-        var cartorderquantity: TextView = itemView.findViewById(R.id.cartorderquantity)
+        var cartorderquantity: TextView = itemView.findViewById(R.id.booktime)
         var cartitemprice: TextView = itemView.findViewById(R.id.cartpriceinOrder)
 
 

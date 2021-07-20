@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HerbalPoint"
         tools:replace="android:theme">
-        <activity android:name=".MedicinePurchase.BuyersRegistration"></activity>
+        <activity android:name=".Admin.BookingConfirmationAdmin"></activity>
+        <activity android:name=".AllAppointmentActivity" />
+        <activity android:name=".MedicinePurchase.BuyersRegistration" />
         <activity android:name=".Admin.ModifyProductAdminActivity" />
         <activity android:name=".Admin.AdminActivity" />
         <activity android:name=".Admin.AdminAddNewProductActivity" />
