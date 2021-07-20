@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.tchnodynamic.herbalpoint.Admin.BookingConfirmationAdmin
 import com.tchnodynamic.herbalpoint.DispesarDetailsActivit
 import com.tchnodynamic.herbalpoint.Models.AppointmentModel
 import com.tchnodynamic.herbalpoint.Models.DispensaryModel
@@ -40,7 +41,9 @@ class AppointmentAdapter (private val mContext: Context,
         holder.itemView.setOnClickListener {
 
 
-            val intent = Intent(mContext, DispesarDetailsActivit::class.java)
+            val intent = Intent(mContext, BookingConfirmationAdmin::class.java)
+            intent.putExtra("dispuserid", mainModel.dispuserid)
+            intent.putExtra("appointmentid", mainModel.appointmentid)
             intent.putExtra("dispname", mainModel.dispname)
             intent.putExtra("patinetcontact", mainModel.patinetcontact)
             intent.putExtra("patientname", mainModel.patientname)
