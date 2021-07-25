@@ -1,6 +1,7 @@
 package com.tchnodynamic.herbalpoint
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,8 +20,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.tchnodynamic.herbalpoint.Adapters.AppointmentAdapter
+import com.tchnodynamic.herbalpoint.Admin.AdminCategoryActivity
 import com.tchnodynamic.herbalpoint.MedicinePurchase.ProductDetailsActivity
 import com.tchnodynamic.herbalpoint.Models.AppointmentModel
+import com.tchnodynamic.herbalpoint.Models.OrderModel
 import com.tchnodynamic.herbalpoint.Prevalent.Prevalent
 import com.tchnodynamic.herbalpoint.databinding.ActivityAllAppointmentBinding
 import com.tchnodynamic.herbalpoint.databinding.ActivityMyOrdersBinding
@@ -44,7 +47,7 @@ class AllAppointmentActivity : AppCompatActivity() {
 
         val textView = findViewById<TextView>(R.id.toolbartext)
 
-        textView.text = "Your Current Appointment!!"
+        textView.text = "All Your Appointments"
         textView.gravity = Gravity.CENTER_HORIZONTAL
 
 
@@ -75,10 +78,62 @@ class AllAppointmentActivity : AppCompatActivity() {
         })
 
 
+        binding.addnew111.setOnClickListener {
+            binding.filtereddata111.visibility = View.VISIBLE
+
+        }
+
+
+        binding.addnew111.setOnClickListener {
+            binding.filtereddata111.visibility = View.VISIBLE
+        }
+
+
+
+
+        binding.pendingOrders111.setOnClickListener {
+            binding.pendingOrders111.setTypeface(binding.pendingOrders111.typeface, Typeface.BOLD)
+            if (Prevalent.UserType != "Seller") {
+                getspecificorders("PENDING")
+            } else {
+                getmyorderssllerspecific("PENDING")
+
+            }
+        }
+
+        binding.confirmOrders111.setOnClickListener {
+            binding.confirmOrders111.setTypeface(binding.confirmOrders111.typeface, Typeface.BOLD)
+            if (Prevalent.UserType != "Seller") {
+                getspecificorders("CONFIRMED")
+            } else {
+                getmyorderssllerspecific("CONFIRMED")
+
+            }
+        }
+        binding.cancelOrders111.setOnClickListener {
+            binding.cancelOrders111.setTypeface(binding.cancelOrders111.typeface, Typeface.BOLD)
+            if (Prevalent.UserType != "Seller") {
+                getspecificorders("CANCELLED")
+            } else {
+                getmyorderssllerspecific("CANCELLED")
+
+            }
+        }
+
+        binding.allOrders111.setOnClickListener {
+            binding.cancelOrders111.setTypeface(binding.cancelOrders111.typeface, Typeface.BOLD)
+            if (Prevalent.UserType != "Seller") {
+                getmyordersbuyer()
+            } else {
+                getmyorderssller()
+
+            }
+        }
+
+
         //Toolbar Logic Above
 
 
-        binding.liner1.visibility = View.GONE
         val linearLayoutManager = LinearLayoutManager(applicationContext)
         linearLayoutManager.reverseLayout = true  // new product at top
         linearLayoutManager.stackFromEnd = true  // new product at top
@@ -96,21 +151,21 @@ class AllAppointmentActivity : AppCompatActivity() {
 
         recyclerView!!.adapter = myAppointsmentsAdapter
 
-
-        if (Prevalent.UserType=="Seller")
-        {
+        Log.wtf("usertype", Prevalent.UserType)
+        if (Prevalent.UserType == "Seller") {
             getmyorderssller()
-        }else
-          getmyordersbuyer()
+        } else
+            getmyordersbuyer()
 
 
     }
 
-    private fun getmyorderssller() {
+    private fun getmyorderssllerspecific(state: String) {
 
-        val allappointmenntsseller = FirebaseDatabase.getInstance().reference.child("Herbal Point").child("Booked Appointment")
+        val allappointmenntssellerspecific = FirebaseDatabase.getInstance().reference.child("Herbal Point")
+            .child("Booked Appointment")
 
-        allappointmenntsseller.addValueEventListener(object : ValueEventListener {
+        allappointmenntssellerspecific.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -118,22 +173,23 @@ class AllAppointmentActivity : AppCompatActivity() {
 
                 for (orderValue in snapshot.children) {
 
-//                    val order = orderValue.getValue(AppointmentModel::class.java)
-//                    order?.orderid = orderValue.key.toString()
 
-                    val Orderbyseller = FirebaseDatabase.getInstance().reference.child("Herbal Point").child("Booked Appointment").child(orderValue.key.toString())
+                    val orderbysellerspecific =
+                        FirebaseDatabase.getInstance().reference.child("Herbal Point")
+                            .child("Booked Appointment").child(orderValue.key.toString())
 
-                    Orderbyseller.addValueEventListener(object : ValueEventListener {
+                    orderbysellerspecific.addValueEventListener(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
 
                             for (ordervaluefinal in snapshot.children) {
 
                                 val product = ordervaluefinal.getValue(AppointmentModel::class.java)
-                                product?.appointmentid = ordervaluefinal.child("appointmentid").value.toString()
+                                product?.appointmentid =
+                                    ordervaluefinal.child("appointmentid").value.toString()
 
 
 
-                                if (product != null ) {
+                                if (product != null&& product.appostatus == state) {
                                     appolist?.add(product)
                                 }
                                 myAppointsmentsAdapter!!.notifyDataSetChanged()
@@ -150,9 +206,7 @@ class AllAppointmentActivity : AppCompatActivity() {
                 }
 
 
-
             }
-
 
 
             override fun onCancelled(error: DatabaseError) {
@@ -164,12 +218,102 @@ class AllAppointmentActivity : AppCompatActivity() {
 
     }
 
+    private fun getspecificorders(state: String) {
+
+
+        val apporef =
+            FirebaseDatabase.getInstance().reference.child("Herbal Point")
+                .child("Booked Appointment")
+                .child(FirebaseAuth.getInstance().currentUser!!.uid)
+
+        apporef.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                appolist?.clear()
+
+                for (orderValue in snapshot.children) {
+
+                    val order = orderValue.getValue(AppointmentModel::class.java)
+
+
+                    if (order != null && order.appostatus == state) {
+                        appolist!!.add(order)
+                    }
+                    myAppointsmentsAdapter!!.notifyDataSetChanged()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+
+
+    }
+
+    private fun getmyorderssller() {
+
+        val allappointmenntsseller = FirebaseDatabase.getInstance().reference.child("Herbal Point")
+            .child("Booked Appointment")
+
+        allappointmenntsseller.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                appolist?.clear()
+
+                for (orderValue in snapshot.children) {
+
+//                    val order = orderValue.getValue(AppointmentModel::class.java)
+//                    order?.orderid = orderValue.key.toString()
+
+                    val Orderbyseller =
+                        FirebaseDatabase.getInstance().reference.child("Herbal Point")
+                            .child("Booked Appointment").child(orderValue.key.toString())
+
+                    Orderbyseller.addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+
+                            for (ordervaluefinal in snapshot.children) {
+
+                                val product = ordervaluefinal.getValue(AppointmentModel::class.java)
+                                product?.appointmentid =
+                                    ordervaluefinal.child("appointmentid").value.toString()
+
+
+
+                                if (product != null) {
+                                    appolist?.add(product)
+                                }
+                                myAppointsmentsAdapter!!.notifyDataSetChanged()
+
+                            }
+
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                        }
+
+
+                    })
+                }
+
+
+            }
+
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+
+
+    }
+
     private fun getmyordersbuyer() {
 
         val allappointmennts = FirebaseDatabase.getInstance().reference.child("Herbal Point")
             .child("Booked Appointment").child(
-            FirebaseAuth.getInstance().currentUser!!.uid
-        )
+                FirebaseAuth.getInstance().currentUser!!.uid
+            )
 
 
 //        orderList?.clear()
@@ -203,7 +347,11 @@ class AllAppointmentActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
-        val intent = Intent(this, ProductDetailsActivity::class.java)
+        val intent: Intent = if (Prevalent.UserType == "Seller") {
+            Intent(this, AdminCategoryActivity::class.java)
+        } else {
+            Intent(this, ChoiceActivity::class.java)
+        }
 //        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK + Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
         finish()
